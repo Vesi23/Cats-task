@@ -1,0 +1,150 @@
+/* Прегледай тези коментари ЗАДЪЛЖИТЕЛНО */
+
+/* ОСОВЕН СТИЛ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* тук поставям position relative на параграфите за да може лесно да ги форматирам с images */
+.text-inf {
+    position: relative;
+    width: 90%;
+}
+
+/* Важно position: absolute; позволява да оформя снимките в друга колона, без да са в действителност в друга колона  */
+/* все едно ги поставям над текста и ги премествам отстрани */
+.images {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+}
+
+.frame {
+    margin: 20px;
+}
+
+.information {
+    width: 100%;
+}
+
+/* Стилизация на всяка снимка */
+.images figure {
+    margin: 0;
+    text-align: center;
+}
+
+/* Стилове за самите снимки */
+.images img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+/* Стилизация на подписа на снимките */
+figcaption {
+    background-color: rgb(16, 60, 104);
+    width: 76%;
+    max-width: 400px;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: right;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 0px 0px 5px 5px;
+    /* така форматирам текста точно под снимката */
+    position: relative;
+    /* 1rem to 5%  */
+    bottom: 1rem;
+    left: 12%;
+
+}
+
+/* Отзивчив дизайн --->  */
+
+/* Ширина над 800px: Текст и снимки са в отделни колони */
+@media (min-width: 801px) {
+    .frame {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .information {
+        width: 55%;
+        margin-right: 20px;
+    }
+
+    /* Отново правим  position: absolute; на снимките */
+    .images {
+        position: absolute;
+        left: 48%;
+        bottom: 5%;
+    }
+}
+
+/* Ширина между 600px и 800px: Снимките се преместват между параграфите */
+@media (min-width: 600px) and (max-width: 800px) {
+    .images {
+
+        /* ТУК  сменяме на static за да не се разположи снимката в/у текста а м/у параграфите */
+        position: static;
+        /* За да се поберат снимките в редица */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .images figure {
+        width: 48%;
+        /* Позволява на снимките да бъдат в редица */
+    }
+
+    .images img {
+        width: 100%;
+        /* Запълва ширината на фигурата */
+        max-width: none;
+    }
+
+    figcaption {
+        background-color: rgb(16, 60, 104);
+        width: 100%;
+        max-width: 400px;
+        /* регулиране на надписа на снимките спрямо размера на страницата */
+        position: relative;
+        top: -15px;
+        left: -0px;
+    }
+}
+
+/* Ширина по-малка от 600px */
+@media (min-width: 300px) and (max-width: 599px) {
+    .images {
+        /* ТУК  сменяме на static за да не се разположи снимката в/у текста а м/у параграфите */
+        position: static;
+        display: block;
+        margin: 20px auto;
+    }
+
+    figcaption {
+        background-color: rgb(16, 60, 104);
+        width: 61%;
+        max-width: 400px;
+        /* регулиране на надписа на снимките спрямо размера на страницата */
+        position: relative;
+        top: -10px;
+        left: 97.5px;
+    }
+
+    .images figure {
+        margin-bottom: 20px;
+    }
+
+    .images img {
+        width: 100%;
+    }
+}
